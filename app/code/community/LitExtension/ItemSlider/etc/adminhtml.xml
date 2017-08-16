@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <itemslider translate="title" module="itemslider">
+                                        <title>Item Slider</title>
+                                    </itemslider>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <itemslider translate="title" module="itemslider">
+                        <title>Item Slider</title>
+                        <children>
+                            <slides>
+                                <title>Sliders</title>
+                            </slides>
+                            <itemslider>
+                                <title>Slider Tabs</title>
+                            </itemslider>
+                            <configure>
+                                <title>Configuration</title>
+                            </configure>
+                        </children>
+                    </itemslider>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <itemslider translate="title" module="itemslider">
+            <title>Item Slider</title>
+            <sort_order>40</sort_order>
+            <depends>
+                <module>LitExtension_ItemSlider</module>
+            </depends>
+            <children>
+                <slides translate="title" module="itemslider">
+                    <title>Manage Sliders</title>
+                    <action>adminhtml/itemslider_slides</action>
+                    <sort_order>0</sort_order>
+                </slides>
+                <itemslider translate="title" module="itemslider">
+                    <title>Manage Slider Tabs</title>
+                    <action>adminhtml/itemslider_itemslider</action>
+                    <sort_order>10</sort_order>
+                </itemslider>
+                <configure translate="title" module="itemslider">
+                    <title>Configuration</title>
+                    <action>adminhtml/system_config/edit/section/itemslider</action>
+                    <sort_order>20</sort_order>
+                </configure>
+            </children>
+        </itemslider>
+    </menu>
+</config>

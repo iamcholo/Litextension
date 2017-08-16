@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<layout version="1.0">
+    <adminhtml_lecaip_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>litextension/cartimport/css/style.css</stylesheet></action>
+            <action method="addJs"><script>litextension/base/jquery.core.js</script></action>
+            <action method="addJs"><script>litextension/cartimport/jquery.form.min.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>litextension/cartimport/js/jq.lecaip.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="lecaip/adminhtml_index" name="lecaip.index" template="litextension/cartimport/index.phtml">
+                <block type="lecaip/adminhtml_index" name="lecaip.resume" template="litextension/cartimport/resume.phtml"/>
+                <block type="lecaip/adminhtml_index" name="lecaip.setup" template="litextension/cartimport/setup.phtml">
+                    <block type="lecaip/adminhtml_index" name="lecaip.upload" template="litextension/cartimport/upload.phtml"/>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_lecaip_index_index>
+</layout>

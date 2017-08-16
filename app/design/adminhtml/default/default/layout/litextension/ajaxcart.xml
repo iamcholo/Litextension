@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     AjaxCart
+ * @package	    LitExtension_AjaxCart
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<layout>
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addJs">
+                <file>litextension/base/jscolor/jscolor.js</file>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+
+</layout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CMInventoryUpdater
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<layout version="1.0">
+
+    <adminhtml_lecmui_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>litextension/cminventoryupdater/css/styles.css</stylesheet></action>
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="lecmui/adminhtml_index" name="lecmui.index" template="litextension/cminventoryupdater/index.phtml"/>
+        </reference>
+    </adminhtml_lecmui_index_index>
+
+    <adminhtml_lecmui_index_update>
+        <reference name="head">
+            <action method="addCss"><stylesheet>litextension/cminventoryupdater/css/styles.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="lecmui/adminhtml_index" name="lecmui.update" template="litextension/cminventoryupdater/update.phtml"/>
+        </reference>
+    </adminhtml_lecmui_index_update>
+
+</layout>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @project     AjaxCart
+ * @package	    LitExtension_AjaxCart
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_AjaxCart>
+            <version>2.0.0</version>
+        </LitExtension_AjaxCart>
+    </modules>
+    <global>
+        <blocks>
+            <leajct>
+                <class>LitExtension_AjaxCart_Block</class>
+            </leajct>
+        </blocks>
+        <helpers>
+            <leajct>
+                <class>LitExtension_AjaxCart_Helper</class>
+            </leajct>
+        </helpers>
+        <models>
+            <leajct>
+                <class>LitExtension_AjaxCart_Model</class>
+            </leajct>
+        </models>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_ajaxcart>
+                    <file>litextension/ajaxcart.xml</file>
+                </litextension_ajaxcart>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <LitExtension_AjaxCart before="Mage_Checkout">LitExtension_AjaxCart_Checkout</LitExtension_AjaxCart>
+                    </modules>
+                </args>
+            </checkout>
+            <catalog>
+                <args>
+                    <modules>
+                        <LitExtension_AjaxCart before="Mage_Catalog">LitExtension_AjaxCart_Catalog</LitExtension_AjaxCart>
+                    </modules>
+                </args>
+            </catalog>
+            <wishlist>
+                <args>
+                    <modules>
+                        <LitExtension_AjaxCart before="Mage_Wishlist">LitExtension_AjaxCart_Wishlist</LitExtension_AjaxCart>
+                    </modules>
+                </args>
+            </wishlist>
+            <leajct>
+                <use>standard</use>
+                <args>
+                    <module>LitExtension_AjaxCart</module>
+                    <frontName>ajaxcart</frontName>
+                </args>
+            </leajct>
+        </routers>
+        <layout>
+            <updates>
+                <litextension_ajaxcart>
+                    <file>litextension/ajaxcart.xml</file>
+                </litextension_ajaxcart>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_AjaxCart>
+                    <files>
+                        <default>LitExtension_AjaxCart.csv</default>
+                    </files>
+                </LitExtension_AjaxCart>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <leajct>
+            <general>
+                <enabled>1</enabled>
+                <effect>none</effect>
+                <theme>simple</theme>
+                <fly>1</fly>
+            </general>
+            <dd>
+                <enabled>1</enabled>
+                <effect>explode</effect>
+                <back>f16022</back>
+                <color>ffffff</color>
+                <hover_text>Drag me</hover_text>
+                <cart_text>BUY</cart_text>
+                <compare_text>COMPARE</compare_text>
+                <wish_text>WISH</wish_text>
+            </dd>
+            <load>
+                <back>ffffff</back>
+                <icon>1</icon>
+                <color>FF6700</color>
+                <size>40</size>
+            </load>
+            <cfgblock>
+                <enabled>1</enabled>
+                <show_related>0</show_related>
+                <show_upsell>0</show_upsell>
+                <show_crosssel>1</show_crosssel>
+                <maxcount>4</maxcount>
+            </cfgblock>
+        </leajct>
+    </default>
+</config>
+

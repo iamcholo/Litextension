@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_CartImport>
+            <version>1.0.0</version>
+        </LitExtension_CartImport>
+    </modules>
+
+    <global>
+        <blocks>
+            <lecaip>
+                <class>LitExtension_CartImport_Block</class>
+            </lecaip>
+        </blocks>
+        <helpers>
+            <lecaip>
+                <class>LitExtension_CartImport_Helper</class>
+            </lecaip>
+        </helpers>
+        <models>
+            <lecaip>
+                <class>LitExtension_CartImport_Model</class>
+                <resourceModel>lecaip_mysql4</resourceModel>
+            </lecaip>
+            <lecaip_mysql4>
+                <class>LitExtension_CartImport_Model_Mysql4</class>
+                <entities>
+                    <import>
+                        <table>lecaip_import</table>
+                    </import>
+                    <user>
+                        <table>lecaip_user</table>
+                    </user>
+                </entities>
+            </lecaip_mysql4>
+            <catalog>
+                <rewrite>
+                    <product>LitExtension_CartImport_Model_Catalog_Product</product>
+                    <product_attribute_backend_media>LitExtension_CartImport_Model_Catalog_Product_Attribute_Backend_Media</product_attribute_backend_media>
+                </rewrite>
+            </catalog>
+        </models>
+        <resources>
+            <lecaip_setup>
+                <setup>
+                    <module>LitExtension_CartImport</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </lecaip_setup>
+        </resources>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_cartimport>
+                    <file>litextension/cartimport.xml</file>
+                </litextension_cartimport>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_CartImport>
+                    <files>
+                        <default>LitExtension_CartImport.csv</default>
+                    </files>
+                </LitExtension_CartImport>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_CartImport before="Mage_Adminhtml">LitExtension_CartImport_Adminhtml</LitExtension_CartImport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+
+    </frontend>
+
+    <default>
+        <lecaip>
+            <general>
+                <csv>200</csv>
+                <taxes>10</taxes>
+                <manufacturers>10</manufacturers>
+                <categories>10</categories>
+                <products>4</products>
+                <customers>10</customers>
+                <orders>10</orders>
+                <reviews>10</reviews>
+                <delay>0.05</delay>
+                <retry>30</retry>
+                <license></license>
+            </general>
+            <setup>
+                <volusion>0</volusion>
+                <custom>0</custom>
+            </setup>
+        </lecaip>
+    </default>
+</config>

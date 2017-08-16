@@ -1,0 +1,10 @@
+1. Name of block, helper, model in config.xml as lexxxx with xxxx is short name of module. Example: AjaxLogin -> leajlg
+2. Sql setup = name of block+setup: AjaxLogin -> leajlg-setup
+3. construct of path is lowercase path of module. Admin and frontend as same. Example:
+    Module: LitExtension_AjaxLogin:
+    - layout: litextension/ajaxlogin.xml
+    - template: litextension/ajaxlogin/
+    - js : litextension/ajaxlogin/
+    - skin: litextension/ajaxlogin/
+4. Tất cả các admin menu đều join vào menu LitExtension, system admin join vào tabs LitExtension được khai báo bởi một module bắt buộc đi kèm tất cả module
+5. Js sử dụng chung thư viện tại js/litextension/lib/jquery.core.js. Các thư viện jq được dùng nhiều cũng được để tại đây: jquery UI, jquery Easing

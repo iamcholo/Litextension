@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartServiceMigrate
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<layout version="1.0">
+    <adminhtml_lecsmg_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>litextension/cartservicemigrate/css/style.css</stylesheet></action>
+            <action method="addJs"><script>litextension/base/jquery.core.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>litextension/cartservicemigrate/js/jq.lecsmg.js</script></action>
+        </reference>
+        <reference name="content">
+            <block type="lecsmg/adminhtml_index" name="lecsmg.index" template="litextension/cartservicemigrate/index.phtml">
+                <block type="lecsmg/adminhtml_index" name="lecsmg.resume" template="litextension/cartservicemigrate/resume.phtml"/>
+                <block type="lecsmg/adminhtml_index" name="lecsmg.setup" template="litextension/cartservicemigrate/setup.phtml">
+                    <block type="lecsmg/adminhtml_index" name="lecsmg.api" template="litextension/cartservicemigrate/api.phtml"/>
+                </block>
+            </block>
+        </reference>
+    </adminhtml_lecsmg_index_index>
+</layout>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project: CMInventoryUpdater
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_CMInventoryUpdater>
+            <version>1.0.0</version>
+        </LitExtension_CMInventoryUpdater>
+    </modules>
+
+    <global>
+        <blocks>
+            <lecmui>
+                <class>LitExtension_CMInventoryUpdater_Block</class>
+            </lecmui>
+        </blocks>
+        <helpers>
+            <lecmui>
+                <class>LitExtension_CMInventoryUpdater_Helper</class>
+            </lecmui>
+        </helpers>
+        <models>
+            <lecmui>
+                <class>LitExtension_CMInventoryUpdater_Model</class>
+            </lecmui>
+        </models>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_cminventoryupdater>
+                    <file>litextension/cminventoryupdater.xml</file>
+                </litextension_cminventoryupdater>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_CMInventoryUpdater>
+                    <files>
+                        <default>LitExtension_CMInventoryUpdater.csv</default>
+                    </files>
+                </LitExtension_CMInventoryUpdater>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_CMInventoryUpdater before="Mage_Adminhtml">LitExtension_CMInventoryUpdater_Adminhtml</LitExtension_CMInventoryUpdater>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+</config>

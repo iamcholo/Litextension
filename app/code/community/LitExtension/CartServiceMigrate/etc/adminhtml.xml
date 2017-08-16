@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project: CartServiceMigrate
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <lecsmg translate="title">
+                                        <title>LitExtension: Cart Service Migrate</title>
+                                        <sort_order>80</sort_order>
+                                    </lecsmg>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <litextension>
+                        <children>
+                            <cartservicemigrate>
+                                <title>Cart Service Migration</title>
+                                <sort_order>120</sort_order>
+                                <children>
+                                    <migration translate="title">
+                                        <title>Migration</title>
+                                        <sort_order>10</sort_order>
+                                    </migration>
+                                    <config translate="title">
+                                        <title>Configuration</title>
+                                        <sort_order>20</sort_order>
+                                    </config>
+                                </children>
+                            </cartservicemigrate>
+                        </children>
+                    </litextension>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <litextension>
+            <children>
+                <cartservicemigrate>
+                    <title>Cart Service Migration</title>
+                    <sort_order>120</sort_order>
+                    <children>
+                        <migration translate="title">
+                            <title>Migration</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/lecsmg_index/index</action>
+                        </migration>
+                        <config translate="title">
+                            <title>Configuration</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/system_config/edit/section/lecsmg</action>
+                        </config>
+                    </children>
+                </cartservicemigrate>
+            </children>
+        </litextension>
+    </menu>
+</config>

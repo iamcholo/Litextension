@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     PromotionBanner
+ * @package	LitExtension_PromotionBanner
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_PromotionBanner>
+            <version>1.1.0</version>
+        </LitExtension_PromotionBanner>
+    </modules>
+    <global>
+        <resources>
+            <litextension_promotionbanner_setup>
+                <setup>
+                    <module>LitExtension_PromotionBanner</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </litextension_promotionbanner_setup>
+            <promotionbanner_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </promotionbanner_write>
+            <promotionbanner_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </promotionbanner_read>
+        </resources>
+		
+        <blocks>
+            <promotionbanner>
+                <class>LitExtension_PromotionBanner_Block</class>
+            </promotionbanner>
+        </blocks>
+        <helpers>
+            <promotionbanner>
+                <class>LitExtension_PromotionBanner_Helper</class>
+            </promotionbanner>
+        </helpers>
+		
+        <models>
+            <promotionbanner>
+                <class>LitExtension_PromotionBanner_Model</class>
+                <resourceModel>promotionbanner_mysql4</resourceModel>
+            </promotionbanner>
+            <promotionbanner_mysql4>
+                <class>LitExtension_PromotionBanner_Model_Mysql4</class>
+                <entities>
+                    <promotionbanner>
+                        <table>le_promotion_banner</table>
+                    </promotionbanner>
+                    <promotionbanner_store>
+                        <table>le_promotion_banner_store</table>
+                    </promotionbanner_store>
+                </entities>
+            </promotionbanner_mysql4>
+        </models>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_promotionbanner>
+                    <file>le_promotionbanner.xml</file>
+                </litextension_promotionbanner>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_PromotionBanner>
+                    <files>
+                        <default>LitExtension_PromotionBanner.csv</default>
+                    </files>
+                </LitExtension_PromotionBanner>
+            </modules>
+        </translate>
+    </adminhtml>
+	
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_PromotionBanner before="Mage_Adminhtml">LitExtension_PromotionBanner_Adminhtml</LitExtension_PromotionBanner>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+        <routers>
+            <promotionbanner>
+                <use>standard</use>
+                <args>
+                    <module>LitExtension_PromotionBanner</module>
+                    <frontName>promotionbanner</frontName>
+                </args>
+            </promotionbanner>
+        </routers>
+        <layout>
+            <updates>
+                <litextension_promotionbanner>
+                    <file>le_promotionbanner.xml</file>
+                </litextension_promotionbanner>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_PromotionBanner>
+                    <files>
+                        <default>LitExtension_PromotionBanner.csv</default>
+                    </files>
+                </LitExtension_PromotionBanner>
+            </modules>
+        </translate>
+    </frontend>
+	
+    <default>
+    </default>
+</config>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @project     PromotionBanner
+ * @package	LitExtension_PromotionBanner
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<widgets>
+    <promotionbanner_widget type="promotionbanner/widget" translate="name description" module="promotionbanner">
+        <name>LE Promotion Banner</name>
+        <description>Add promotionbanner for page</description>
+        <parameters>
+            <le_pb_banner_id>
+                <label>Banner</label>
+                <type>select</type>
+                <source_model>promotionbanner/system_config_source_banner</source_model>
+                <visible>1</visible>
+                <required>1</required>
+            </le_pb_banner_id>
+        </parameters>
+    </promotionbanner_widget>
+</widgets> 

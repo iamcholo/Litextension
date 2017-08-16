@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     LEImageSlider
+ * @package     LitExtension_LEImageSlider
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    
+    <modules>
+        <LitExtension_LEImageSlider>
+            <version>1.1.1</version>
+        </LitExtension_LEImageSlider>
+    </modules>
+    
+    <global>
+        
+        <resources>
+            <litextension_leimageslider_setup>
+                <setup>
+                    <module>LitExtension_LEImageSlider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </litextension_leimageslider_setup>
+            <leimageslider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </leimageslider_write>
+            <leimageslider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </leimageslider_read>
+        </resources>
+        
+        <blocks>
+            <leimageslider>
+                <class>LitExtension_LEImageSlider_Block</class>
+            </leimageslider>
+        </blocks>
+        <helpers>
+            <leimageslider>
+                <class>LitExtension_LEImageSlider_Helper</class>
+            </leimageslider>
+        </helpers>
+        
+        <models>
+            <leimageslider>
+                <class>LitExtension_LEImageSlider_Model</class>
+                <resourceModel>leimageslider_mysql4</resourceModel>
+            </leimageslider>
+            <leimageslider_mysql4>
+                <class>LitExtension_LEImageSlider_Model_Mysql4</class>
+                <entities>
+                    <leimageslider>
+                        <table>leimageslider</table>
+                    </leimageslider>
+                    <leimageslider_group>
+                        <table>leimageslider_group</table>
+                    </leimageslider_group>
+                    <leimageslider_group_store>
+                        <table>leimageslider_group_store</table>
+                    </leimageslider_group_store>
+                </entities>
+            </leimageslider_mysql4>
+        </models>
+
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_leimageslider>
+                    <file>le_leimageslider.xml</file>
+                </litextension_leimageslider>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_LEImageSlider>
+                    <files>
+                        <default>LitExtension_LEImageSlider.csv</default>
+                    </files>
+                </LitExtension_LEImageSlider>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_LEImageSlider before="Mage_Adminhtml">LitExtension_LEImageSlider_Adminhtml</LitExtension_LEImageSlider>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <leimageslider>
+                <use>standard</use>
+                <args>
+                    <module>LitExtension_LEImageSlider</module>
+                    <frontName>leimageslider</frontName>
+                </args>
+            </leimageslider>
+        </routers>
+        <layout>
+            <updates>
+                <litextension_leimageslider>
+                    <file>le_leimageslider.xml</file>
+                </litextension_leimageslider>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_LEImageSlider>
+                    <files>
+                        <default>LitExtension_LEImageSlider.csv</default>
+                    </files>
+                </LitExtension_LEImageSlider>
+            </modules>
+        </translate>
+    </frontend>
+    
+</config>

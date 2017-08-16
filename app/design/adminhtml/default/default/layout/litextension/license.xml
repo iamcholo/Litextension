@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <adminhtml_lelicn_index_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>sales/license</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="lelicn/adminhtml_cm" name="lelicn_cm" />
+        </reference>
+    </adminhtml_lelicn_index_index>
+
+    <adminhtml_lelicn_index_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="lelicn/adminhtml_cm_grid" name="lelicn_grid"/>
+        </block>
+    </adminhtml_lelicn_index_grid>
+
+    <adminhtml_lelicn_index_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>sales/license</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="lelicn/adminhtml_cm_edit" name="lelicn_edit"></block>
+        </reference>
+    </adminhtml_lelicn_index_edit>
+
+    <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <block type="lelicn/adminhtml_sales_order_view_tabs_addition" name="lelicn_addition"/>
+            <action method="addTab">
+                <name>Addition</name>
+                <block>lelicn_addition</block>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <adminhtml_lelicn_addition_edit>
+        <update handle="editor"/>
+        <reference name="content">
+            <block type="lelicn/adminhtml_addition_edit" name="lelicn_addition_edit"></block>
+        </reference>
+    </adminhtml_lelicn_addition_edit>
+
+</layout>

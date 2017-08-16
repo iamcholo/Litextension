@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     RotatingImageSlider
+ * @package	LitExtension_RotatingImageSlider
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<widgets>
+    <rotatingimageslider_widget type="rotatingimageslider/widget" translate="name description" module="rotatingimageslider">
+        <name>LE Rotating Image Slider</name>
+        <description>Add rotatingimageslider for page</description>
+    </rotatingimageslider_widget>
+</widgets> 

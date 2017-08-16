@@ -1,0 +1,58 @@
+<?php
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php $notice = $this->getNotice(); ?>
+<form action="" method="post" id="form-setup" enctype="multipart/form-data">
+    <h1 class="header_title"><?php echo $this->__("Source Cart Setup"); ?></h1>
+    <?php if($this->_checkShowWarning()){ ?>
+        <div class="lecm-warning" style="text-align: left;">
+            <p><strong>Warning:</strong></p>
+            <?php if(!$this->_checkFolderMediaPermission()){ ?><p> - Folder "media" is not writable, images could not be saved!</p><?php } ?>
+            <?php if(!$this->_checkAllowUrlFOpen()){ ?><p> - PHP variable allow_url_fopen = Off, need to change to allow_url_fopen = On, please click <a href="https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=allow_url_fopen+php" target="_blank">here</a> for detail</p><?php } ?>
+            <?php if(!Mage::getStoreConfig('system/smtp/disable')){?><p> - You have email notification turned on, this can send welcome emails to your customers during migration, it is recommended to turn it off and turn back on when migration is completed. To turn it off: System > Configuration > Advanced Tab > System > Mail Sending Settings > Disable Email Communications = "Yes"</p><?php } ?>
+        </div>
+    <?php } ?>
+    <div class="container">
+        <div class="form-group">
+            <div class="label-field">
+                <p>
+                    <label><?php echo $this->__("Cart Type:"); ?>
+                        <span class="required">*</span>
+                    </label>
+                </p>
+            </div>
+            <div class="input-field">
+                <select id="cart_type" name="cart_type" class="required-entry input-text">
+                    <?php echo $this->getCartsOption($notice['config']['cart_type']);?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label-field">
+                <p>
+                    <label><?php echo $this->__("Cart Url:"); ?>
+                        <span class="required">*</span>
+                    </label>
+                </p>
+            </div>
+            <div class="input-field">
+                <input type="text" name="cart_url" id="cart_url" class="required-entry input-text validate-url" value="<?php echo $notice['config']['cart_url'];?>"/>
+                <p style="font-size: 11px;">Please enter correct Source Cart Url as it will be registered as the migration domain.</p>
+            </div>
+        </div>
+        <div id="file-upload">
+            <?php echo $this->getChild('lecaip.upload')->setListUpload($notice['config']['file_data'])->setCartType($notice['config']['cart_type'])->toHtml();?>
+        </div>
+        <div class="form-submit">
+            <div id="form-setup-loading" class="form-loading"><?php echo $this->__('Connecting')?> ... </div>
+            <div id="form-setup-submit" class="button-submit hidden" style="display: none;">
+                <a href="javascript:void(0)" class="lecaip-button"><?php echo $this->__('Next') ?> &raquo;</a>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php $notice = $this->getNotice(); ?>
+<form action="" method="post" id="form-csv">
+    <input type="hidden" name="action" value="csv"/>
+    <h1 class="header_title">Import data files</h1>
+    <div id="process-import-csv">
+        <p>
+            <img src="<?php echo $this->getSkinUrl('litextension/cartimport/img/loader-small.gif');?>"/>
+            <?php echo $this->__('Importing data files into temporary storage for later processing …');?>
+        </p>
+    </div>
+    <div id="lecm-csv-log" class="lecm-console-log-wrap">
+        <div class="lecm-log-title"><?php echo $this->__('Console');?></div>
+        <div class="lecm-console-log">
+            <?php echo $notice['csv_import']['msg']; ?>
+        </div>
+    </div>
+    <div class="form-submit">
+        <div id="try-import-csv" class="button-submit" style="display: none;">
+            <a href="javascript:void(0)" class="lecaip-button"><?php echo $this->__('Retry') ?></a>
+        </div>
+    </div>
+</form>

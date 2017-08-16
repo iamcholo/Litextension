@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<widgets>
+    <itemslider_widget type="itemslider/item" translate="name description" module="itemslider">
+        <name>LE Item Slider</name>
+        <description>Add ItemSlider for page</description>
+        <parameters>
+            <le_slide_id>
+                <label>Slide</label>
+                <type>select</type>
+                <source_model>itemslider/system_config_source_slides</source_model>
+                <visible>1</visible>
+                <required>1</required>
+            </le_slide_id>
+        </parameters>
+    </itemslider_widget>
+</widgets> 

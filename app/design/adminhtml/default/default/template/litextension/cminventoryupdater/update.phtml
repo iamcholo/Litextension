@@ -1,0 +1,67 @@
+<?php
+/**
+ * @project: CMInventoryUpdater
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php
+$notice = $this->getNotice();
+$messages = $this->getMessages();
+?>
+<div class="le-content-migration">
+    <div class="content-header">
+        <span class="lecamg-logo"></span>
+    </div>
+    <div id="w" class="clearfix">
+        <div id="le-content">
+            <div class="content-block">
+                <h1 class="header_title"><?php echo $this->__("Update Result"); ?></h1>
+
+                <div class="le-container">
+                    <div class="le-form-fields">
+                        <div class="label-fields">
+                            <p><label><?php echo  $this->__("Cart Type"); ?>:</label></p>
+                        </div>
+                        <div class="input-fields">
+                            <p><?php echo $this->getCartTypeByValue($notice['config']['cart_type']); ?></p>
+                        </div>
+                    </div>
+                    <div class="le-form-fields">
+                        <div class="label-fields">
+                            <p><label><?php echo  $this->__("Cart Url"); ?>:</label></p>
+                        </div>
+                        <div class="input-fields">
+                            <p><?php echo $notice['config']['cart_url']; ?></p>
+                        </div>
+                    </div>
+                    <div class="le-form-fields">
+                        <div class="label-fields">
+                            <p><label><?php echo  $this->__("Cart Token"); ?>:</label></p>
+                        </div>
+                        <div class="input-fields">
+                            <p><?php echo $notice['config']['cart_token']; ?></p>
+                        </div>
+                    </div>
+                    <div class="le-form-fields iu-result">
+                        <p class="result-header"><?php echo  $this->__("Product Update Result"); ?>:</p>
+                        <div class="result-main">
+                        <?php foreach($messages as $message ): ?>
+                            <?php echo $message; ?>
+                        <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="<?php echo $this->getUrl('adminhtml/lecmui_index/index',array('_secure'=>true)); ?>" class="">&laquo; <?php echo $this->__('Back to previous Step') ?></a>
+                    </div>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="le-footer-migration">
+        <p><?php echo $this->__('Cart Migration Inventory Updater by LitExtension ver ') . Mage::getConfig()->getNode()->modules->LitExtension_CMInventoryUpdater->version; ?></p>
+    </div>
+</div>

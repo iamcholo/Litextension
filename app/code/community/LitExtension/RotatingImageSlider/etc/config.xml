@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     RotatingImageSlider
+ * @package	LitExtension_RotatingImageSlider
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_RotatingImageSlider>
+            <version>1.0.0</version>
+        </LitExtension_RotatingImageSlider>
+    </modules>
+    <global>
+        <resources>
+            <litextension_rotatingimageslider_setup>
+                <setup>
+                    <module>LitExtension_RotatingImageSlider</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </litextension_rotatingimageslider_setup>
+            <rotatingimageslider_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </rotatingimageslider_write>
+            <rotatingimageslider_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </rotatingimageslider_read>
+        </resources>
+        
+        <blocks>
+            <rotatingimageslider>
+                <class>LitExtension_RotatingImageSlider_Block</class>
+            </rotatingimageslider>
+        </blocks>
+        <helpers>
+            <rotatingimageslider>
+                <class>LitExtension_RotatingImageSlider_Helper</class>
+            </rotatingimageslider>
+        </helpers>
+        
+        <models>
+            <rotatingimageslider>
+                <class>LitExtension_RotatingImageSlider_Model</class>
+                <resourceModel>rotatingimageslider_mysql4</resourceModel>
+            </rotatingimageslider>
+            <rotatingimageslider_mysql4>
+                <class>LitExtension_RotatingImageSlider_Model_Mysql4</class>
+                <entities>
+                    <rotatingimageslider>
+                        <table>le_rotatingimageslider</table>
+                    </rotatingimageslider>
+                    <rotatingimageslider_store>
+                        <table>le_rotatingimageslider_store</table>
+                    </rotatingimageslider_store>
+                </entities>
+            </rotatingimageslider_mysql4>
+        </models>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_rotatingimageslider>
+                    <file>le_rotatingimageslider.xml</file>
+                </litextension_rotatingimageslider>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_RotatingImageSlider>
+                    <files>
+                        <default>LitExtension_RotatingImageSlider.csv</default>
+                    </files>
+                </LitExtension_RotatingImageSlider>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_RotatingImageSlider before="Mage_Adminhtml">LitExtension_RotatingImageSlider_Adminhtml</LitExtension_RotatingImageSlider>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <frontend>
+        <routers>
+            <rotatingimageslider>
+                <use>standard</use>
+                <args>
+                    <module>LitExtension_RotatingImageSlider</module>
+                    <frontName>rotatingimageslider</frontName>
+                </args>
+            </rotatingimageslider>
+        </routers>
+        <layout>
+            <updates>
+                <litextension_rotatingimageslider>
+                    <file>le_rotatingimageslider.xml</file>
+                </litextension_rotatingimageslider>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_RotatingImageSlider>
+                    <files>
+                        <default>LitExtension_RotatingImageSlider.csv</default>
+                    </files>
+                </LitExtension_RotatingImageSlider>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <rotatingimageslider>
+            <rotatingimageslider>
+                <autoplay>1</autoplay>
+                <showhide>1</showhide>
+                <width>1160</width>
+                <height>530</height>
+                <bgcolor>FFFFFF</bgcolor>
+                <label>This is label</label>
+                <label_position>right</label_position>
+            </rotatingimageslider>
+        </rotatingimageslider>
+    </default>
+</config>

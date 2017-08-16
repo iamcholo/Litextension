@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    
+    <tabs>
+        <litextension translate="label" module="ajaxsearch">
+            <label>LitExtension</label>
+            <sort_order>2000</sort_order>
+        </litextension>
+    </tabs>
+    
+    <sections>
+        <ajaxsearch translate="label" module="ajaxsearch">
+            <label>Ajax Search</label>
+            <tab>litextension</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1070</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" >
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable>
+                            <label>Enable Ajax Search</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <showprod translate="label comment">
+                            <label>Products to Show</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showprod>
+                        <search_in_categories>
+                            <label>Search in Categories</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </search_in_categories>
+                        <linknewtab translate="label comment">
+                            <label>Open Link in a New Window</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </linknewtab>
+                        <imagesize translate="label comment">
+                            <label>Thumbnail Width (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </imagesize>
+                        <querydelay translate="label comment">
+                            <label>Query Delay (millisecond)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </querydelay>
+                        <showoosp>
+                            <label>Show Out of Stock Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showoosp>
+                        <attrsearch translate="label">
+                            <label>Search Attributes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>ajaxsearch/system_config_source_attribute</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </attrsearch>
+                        <showinfo translate="label">
+                            <label>Show Info</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>ajaxsearch/system_config_source_info</source_model>
+                            <can_be_empty>1</can_be_empty>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </showinfo>
+                        <minimum_characters translate="label comment">
+                            <label>Minimum Characters</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </minimum_characters>
+                        <no_result_message translate="label">
+                            <label>No Result Message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </no_result_message>
+                        <highlight>
+                            <label>Keyword Highlight</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store></highlight>
+                    </fields>
+                </general>
+            </groups>
+        </ajaxsearch>
+    </sections>
+</config>

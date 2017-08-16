@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <acregistration translate="title" module="acregistration">
+                                        <title>Advance Customer Registration</title>
+                                    </acregistration>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <acregistration>
+                        <title>Ajax Login</title>
+                        <children>
+                            <attributemanager>
+                                <title>Attributes</title>
+                            </attributemanager>
+                            <config>
+                                <title>Configuration</title>
+                            </config>
+                        </children>
+                    </acregistration>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <acregistration>
+            <title>Advance Customer Registration</title>
+            <sort_order>90</sort_order>
+            <depends>
+                <module>LitExtension_ACRegistration</module>
+            </depends>
+            <children>
+                <attributemanager translate="title" module="acregistration">
+                    <title>Custom Attributes Manager</title>
+                    <sort_order>100</sort_order>
+                    <action>acregistration/index/customer/filter/</action>
+                </attributemanager>
+                <config translate="title" module="acregistration">
+                    <title>Configuration</title>
+                    <action>adminhtml/system_config/edit/section/acregistration</action>
+                    <sort_order>200</sort_order>
+                </config>
+            </children>
+        </acregistration>
+    </menu>
+</config>

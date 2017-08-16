@@ -1,0 +1,50 @@
+<?php
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php
+$list = $this->getListUpload();
+$cart_type = $this->getCartType();
+if(!$list){
+    $list = $this->getListUploadOfFirstCart();
+}
+if(!$cart_type){
+    $cart_type = $this->getCartTypeFirst();
+}
+?>
+<?php if(!$list){?>
+    No file upload.
+<?php } else {?>
+<h3><strong>Import Source Data</strong></h3>
+<?php if($cart_type){ ?>
+    <?php echo $this->getLayout()->createBlock('lecaip/adminhtml_index')->setTemplate('litextension/cartimport/guide/' . $cart_type .'.phtml')->toHtml(); ?>
+<?php } ?>
+<div>
+    <div>
+        <div class="upload-item" style="clear: both;">
+            <div class="upload-item-name"><strong>Resource</strong></div>
+            <div class="upload-item-input"><strong>Upload</strong></div>
+            <div class="upload-item-result"><strong>Upload Result</strong></div>
+        </div>
+        <?php $i =0; ?>
+
+        <?php foreach($list as $upload){?>
+            <div class="upload-item <?php if($i%2){echo "ui-even" ;} else {echo "ui-odd";} $i++;?>" style="clear: both;border: 1px solid #F2F2F2;<?php if($upload['value']=='guide'){ echo 'height:auto;    overflow: auto; padding 20px 0;'; } ?>">
+                <div class="upload-item-name"style="<?php if($upload['value']=='guide'){ echo ' width:100%; padding 20px 0;'; } ?>"><label><?php echo $upload['label']; ?></label></div>
+                <div class="upload-item-input" style="<?php if($upload['value']=='guide'){ echo ' display:none;'; } ?> overflow: hidden;"><input type="file" name="<?php echo $upload['value']; ?>" id="<?php echo $this->createUploadId($upload['value']); ?>"/></div>
+                <div class="upload-item-result uir" id="ur-<?php echo $upload['value'];?>" style="<?php if($upload['value']=='guide'){ echo 'display:none;'; } ?>"></div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<div class="upload-item">
+    <a href="javascript:void(0)" id="form-upload-submit" class="lecaip-button">Upload</a>
+    <div id="upload-loading" >
+        <img src="<?php echo $this->getSkinUrl('litextension/cartimport/img/loader-small.gif');?>"/> Uploading ...
+    </div>
+</div>
+<?php } ?>

@@ -1,0 +1,175 @@
+<?php
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+
+class LitExtension_CartMigration_Model_Seo_Virtuemart_Custom{
+
+     protected $_allLang = array(
+            'en' => array(
+                'lang_code' => 'en_gb',
+            ),
+        );
+
+        public function getCategoriesExtQuery($cart, $categories){
+            return false;
+        }
+
+        public function getCategoriesExtRelQuery($cart, $categories, $categoriesExt){
+            $catParentIds = $cart->duplicateFieldValueFromList($categoriesExt['object']['virtuemart_category_categories'], 'category_parent_id');
+            $allCatParentIdsCon =  $cart->arrayToInCondition($catParentIds);
+            $ext_query = array(
+                'virtuemart_category_categories_parent' => "SELECT * FROM _DBPRF_virtuemart_category_categories WHERE category_child_id IN {$allCatParentIdsCon}",
+            );
+            foreach($this->_allLang as $lang => $data_lang){
+                $table = '_DBPRF_virtuemart_categories_' . $data_lang['lang_code'];
+                $key_query = 'virtuemart_categories_' . $lang .'_parent';
+                $ext_query[$key_query] = "SELECT * FROM {$table} WHERE virtuemart_category_id IN {$allCatParentIdsCon}";
+            }
+            return $ext_query;
+        }
+
+        public function convertCategorySeo($cart, $category, $categoriesExt){
+            $result = $allPath = array();
+            $notice = $cart->getNotice();
+            foreach($this->_allLang as $lang => $data_lang){
+                $seo_path_all_key = 'seo_path_all_' . $lang;
+                $cat_slug_lang_key = 'cat_slug_' . $lang;
+                $$cat_slug_lang_key = $cart->getRowValueFromListByField($categoriesExt['object']['virtuemart_categories_' . $data_lang['lang_code']], 'virtuemart_category_id', $category['virtuemart_category_id'], 'slug');
+                $$seo_path_all_key = array($$cat_slug_lang_key);
+            }
+            $parent = $cart->getRowFromListByField($categoriesExt['object']['virtuemart_category_categories'], 'category_child_id', $category['virtuemart_category_id']);
+            if($parent && $parent['category_parent_id'] != 0){
+                foreach($this->_allLang as $lang => $data_lang){
+                    $seo_path_all_key = 'seo_path_all_' . $lang;
+                    $parent_lv1_slug_lang = $cart->getRowValueFromListByField($categoriesExt['object']['virtuemart_categories_' . $lang . '_parent'], 'virtuemart_category_id', $parent['category_parent_id'], 'slug');
+                    if($parent_lv1_slug_lang){
+                        array_push($$seo_path_all_key, $parent_lv1_slug_lang);
+                    }
+                }
+                $parent_lv2 = $cart->getRowFromListByField($categoriesExt['object']['virtuemart_category_categories_parent'], 'category_child_id', $parent['category_parent_id']);
+                if($parent_lv2 || $parent_lv2['category_parent_id'] != 0){
+                    $tmp = $this->_getCategoriesParent($cart, $parent_lv2['category_parent_id'], array());
+                    foreach($this->_allLang as $lang => $data_lang){
+                        $seo_path_all_key = 'seo_path_all_' . $lang;
+                        if(isset($tmp[$lang])){
+                            $$seo_path_all_key = array_merge( $$seo_path_all_key, $tmp[$lang]);
+                        }
+                        $$seo_path_all_key = array_reverse($$seo_path_all_key);
+                        $allPath[] = implode('/', $$seo_path_all_key);
+                    }
+                }
+            }else{
+                foreach($this->_allLang as $lang => $data_lang){
+                    $cat_slug_lang_key = 'cat_slug_' . $lang;
+                    $allPath[] = $$cat_slug_lang_key;
+                }
+
+            }
+            foreach($notice['config']['languages'] as $lang_id => $store_id){
+                foreach($allPath as $path){
+                    $result[] = array(
+                        'store_id' => $store_id,
+                        'request_path' => 'shop/' . $path
+                    );
+                }
+            }
+            return $result;
+        }
+
+        public function getProductsExtQuery($cart, $products){
+            return false;
+        }
+
+        public function getProductsExtRelQuery($cart, $products, $productsExt){
+            $catIds = $cart->duplicateFieldValueFromList($productsExt['object']['virtuemart_product_categories'], 'virtuemart_category_id');
+            $catIdsCon =  $cart->arrayToInCondition($catIds);
+            $ext_query = array(
+                'virtuemart_category_categories' => "SELECT * FROM _DBPRF_virtuemart_category_categories WHERE category_child_id IN {$catIdsCon}",
+            );
+            foreach($this->_allLang as $lang => $data_lang){
+                $table = '_DBPRF_virtuemart_categories_' . $data_lang['lang_code'];
+                $key_query = 'virtuemart_categories_' . $lang;
+                $ext_query[$key_query] = "SELECT * FROM {$table} WHERE virtuemart_category_id IN {$catIdsCon}";
+            }
+            return $ext_query;
+        }
+
+        public function convertProductSeo($cart, $product, $productsExt){
+            $result = $allPath = array();
+            $notice = $cart->getNotice();
+            foreach($this->_allLang as $lang => $data_lang){
+                $pro_slug_lang_key = 'pro_slug_' . $lang;
+                $$pro_slug_lang_key = $cart->getRowValueFromListByField($productsExt['object']['virtuemart_products_' . $data_lang['lang_code']], 'virtuemart_product_id', $product['virtuemart_product_id'], 'slug');
+            }
+            $catSrc = $cart->getListFromListByField($productsExt['object']['virtuemart_product_categories'], 'virtuemart_product_id', $product['virtuemart_product_id']);
+            if($catSrc){
+                foreach($catSrc as $cat_src){
+                    foreach($this->_allLang as $lang => $data_lang){
+                        $seo_path_cat_lang = 'seo_path_cat' . $lang;
+                        $cat_src_lv1 = $cart->getRowValueFromListByField($productsExt['object']['virtuemart_categories_' . $lang], 'virtuemart_category_id', $cat_src['virtuemart_category_id'], 'slug');
+                        $$seo_path_cat_lang = array($cat_src_lv1);
+                    }
+                    $parent_cat = $cart->getRowFromListByField($productsExt['object']['virtuemart_category_categories'], 'category_child_id', $cat_src['virtuemart_category_id']);
+                    if($parent_cat && $parent_cat['category_parent_id'] != 0){
+                        $tmp = $this->_getCategoriesParent($cart, $parent_cat['category_parent_id'], array());
+                        foreach($this->_allLang as $lang => $data_lang){
+                            $seo_path_cat_lang = 'seo_path_cat' . $lang;
+                            $pro_slug_lang_key = 'pro_slug_' . $lang;
+                            if(isset($tmp[$lang])){
+                                $$seo_path_cat_lang = array_merge($$seo_path_cat_lang, $tmp[$lang]);
+                            }
+                            $$seo_path_cat_lang = array_reverse($$seo_path_cat_lang);
+                            $path_cat = implode('/',  $$seo_path_cat_lang);
+                            $allPath[] = $path_cat . '/' . $$pro_slug_lang_key . '-detail';
+                        }
+                    }
+                }
+            }else{
+                foreach($this->_allLang as $lang => $data_lang){
+                    $pro_slug_lang_key = 'pro_slug_' . $lang;
+                    $allPath[] = $$pro_slug_lang_key . '-detail';
+                }
+            }
+            foreach($notice['config']['languages'] as $lang_id => $store_id){
+                foreach($allPath as $path){
+                    $result[] = array(
+                        'store_id' => $store_id,
+                        'request_path' => 'shop/' . $path
+                    );
+                }
+            }
+            return $result;
+        }
+
+        protected function _getCategoriesParent($cart, $cat_parent_id, $data){
+            $query = array(
+                'virtuemart_category_categories' => "SELECT * FROM _DBPRF_virtuemart_category_categories WHERE category_child_id = $cat_parent_id",
+            );
+            foreach($this->_allLang as $lang => $data_lang){
+                $table = '_DBPRF_virtuemart_categories_' . $data_lang['lang_code'];
+                $key_query = 'virtuemart_categories_' . $lang;
+                $query[$key_query] = "SELECT * FROM {$table} WHERE virtuemart_category_id = $cat_parent_id";
+            }
+            $result = $cart->getDataImportByQuery($query);
+            if(!$result || $result['result'] != 'success'){
+                return array(
+                    'result' => 'error'
+                );
+            }
+            foreach($this->_allLang as $lang => $data_lang){
+                if(!isset($result['object']['virtuemart_categories_' . $lang][0])){
+                    continue;
+                }
+                $data[$lang][] = $result['object']['virtuemart_categories_' . $lang][0]['slug'];
+            }
+            $parent = $cart->getRowFromListByField($result['object']['virtuemart_category_categories'], 'category_child_id', $cat_parent_id);
+            if($parent && $parent['category_parent_id'] != 0){
+                $data = $this->_getCategoriesParent($cart, $parent['category_parent_id'], $data);
+            }
+            return $data;
+        }
+}

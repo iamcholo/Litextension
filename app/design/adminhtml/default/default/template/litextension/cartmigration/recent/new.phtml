@@ -1,0 +1,42 @@
+<?php
+/**
+ * @project: CartMigration
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php
+$notice = $this->getNotice();
+$entities = array(
+    'taxes' => 'Taxes',
+    'manufacturers' => 'Manufacturers',
+    'categories' => 'Categories',
+    'products' => 'Products',
+    'reviews' => 'Reviews',
+    'customers' => 'Customers',
+    'orders' => 'Orders',
+    'carts' => 'Carts',
+    'pages' => 'Pages',
+    'blocks' => 'Static blocks',
+    'widgets' => 'Widgets',
+    'polls' => 'Polls',
+    'transactions' => 'Transaction email',
+    'newsletters' => 'Newsletter template',
+    'users' => 'Users',
+    'rules' => 'Rules',
+    'cartrules' => 'Cart Rules',
+);
+?>
+
+<div style="padding: 10px;">
+    <div style="padding-bottom: 5px;font-weight: bold;">Recent Data</div>
+    <?php
+    foreach($notice['config']['import'] as $key => $value){
+        if($value == true){ ?>
+            <?php $new = isset($notice[$key]['new'])? $notice[$key]['new'] : 0; ?>
+            <p> - <?php echo $new . ' new ' . $key; ?></p>
+        <?php }
+    }
+    ?>
+</div>

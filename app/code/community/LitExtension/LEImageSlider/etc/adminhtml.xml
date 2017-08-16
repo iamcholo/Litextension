@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     LEImageSlider
+ * @package     LitExtension_LEImageSlider
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <leimageslider translate="title" module="leimageslider">
+                                        <title>Image Slider</title>
+                                    </leimageslider>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <leimageslider translate="title" module="leimageslider">
+                        <title>Image Slider</title>
+                        <children>
+                            <group>
+                                <title> Manage Groups</title>
+                            </group>              
+                        </children>
+                    </leimageslider>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <leimageslider translate="title" module="leimageslider">
+            <title>Image Slider</title>
+            <sort_order>70</sort_order>
+            <depends>
+                <module>LitExtension_LEImageSlider</module>
+            </depends>
+            <children>
+                <group translate="title" module="leimageslider">
+                    <title> Manage Groups</title>
+                    <action>adminhtml/leimageslider_group</action>
+                    <sort_order>1</sort_order>
+                </group>              
+            </children>
+        </leimageslider>
+    </menu>
+</config>

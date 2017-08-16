@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     PromotionBanner
+ * @package	LitExtension_PromotionBanner
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <promotionbanner translate="title" module="promotionbanner">
+                                        <title>Promotion Banner</title>
+                                    </promotionbanner>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <promotionbanner translate="title" module="promotionbanner">
+                        <title>Promotion Banner</title>
+                        <children>
+                            <banner translate="title" module="promotionbanner">
+                                <title>Banner</title>
+                            </banner>
+                        </children>
+                    </promotionbanner>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <promotionbanner translate="title" module="promotionbanner">
+            <title>Promotion Banner</title>
+            <sort_order>70</sort_order>
+            <depends>
+                <module>LitExtension_PromotionBanner</module>
+            </depends>
+            <children>
+                <banner translate="title" module="promotionbanner">
+                    <title>Manage Banner</title>
+                    <action>adminhtml/promotionbanner_banner</action>
+                    <sort_order>0</sort_order>
+                </banner>
+            </children>
+        </promotionbanner>
+    </menu>
+</config>

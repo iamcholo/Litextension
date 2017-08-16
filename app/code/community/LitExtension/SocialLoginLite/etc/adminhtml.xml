@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project     SocialLogin
+ * @package     LitExtension_SocialLogin
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <le_sociallogin translate="title" module="le_sociallogin">
+                                        <title>Social Login</title>
+                                    </le_sociallogin>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <litextension>
+                       <children>
+                           <le_sociallogin>
+                                <title>Social Login</title>
+                            </le_sociallogin>
+                       </children>
+                    </litextension>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <litextension>
+             <children>
+                <le_sociallogin>
+                    <title>Social Login</title>
+                    <action>adminhtml/system_config/edit/section/le_sociallogin</action>
+                    <sort_order>70</sort_order>
+                    <depends>
+                        <module>LitExtension_SocialLogin</module>
+                    </depends>
+                </le_sociallogin>
+            </children>
+        </litextension>
+    </menu>
+</config>

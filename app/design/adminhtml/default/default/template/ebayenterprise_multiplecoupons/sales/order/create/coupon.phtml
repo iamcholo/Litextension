@@ -1,0 +1,70 @@
+<?php
+/**
+ * Copyright (c) 2013-2015 eBay Enterprise, Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.md.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @copyright   Copyright (c) 2013-2015 eBay Enterprise, Inc. (http://www.ebayenterprise.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php
+/** @var EbayEnterprise_Coupons_Block_Adminhtml_Sales_Order_Create_Coupon $this */
+?>
+<div class="entry-edit box-left">
+
+    <div class="entry-edit-head">
+
+        <h4 class="icon-head"><?php echo Mage::helper('sales')->__('Apply Coupon Code?') ?></h4>
+
+    </div>
+
+    <fieldset class="np">
+
+        <div class="content">
+
+            <p>
+
+                <input type="text" class="input-text" id="coupons:code" value="" name="coupon_code" style="width:200px" />
+
+                <?php echo $this->getButtonHtml(Mage::helper('sales')->__('Apply'), 'order.applyCoupon($F(\'coupons:code\'))') ?>
+
+            </p>
+
+            <?php if($this->getCouponCode()): ?>
+
+                <?php foreach($this->getAppliedCoupons() as $couponCode) : ?>
+
+                    <p><strong><?php echo $this->escapeHtml($couponCode) ?>
+
+                        </strong> [
+
+                        <a href="#"
+                           onclick="order.removeCoupon('<?php echo $couponCode ?>');return false;"
+                           title="<?php echo Mage::helper('sales')->__('Remove Coupon Code') ?>"
+                            >
+                            <?php echo Mage::helper('sales')->__('Remove') ?>
+
+                        </a>]
+
+                    </p>
+
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
+        </div>
+
+    </fieldset>
+
+</div>
+
+<script type="text/javascript">
+    order.overlay('shipping-method-overlay', <?php if ($this->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+    order.overlay('address-shipping-overlay', <?php if ($this->getQuote()->isVirtual()): ?>false<?php else: ?>true<?php endif; ?>);
+</script>

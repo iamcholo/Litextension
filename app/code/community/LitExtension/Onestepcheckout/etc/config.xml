@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <LitExtension_Onestepcheckout>
+            <version>1.0.3</version>
+        </LitExtension_Onestepcheckout>
+    </modules>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_onestepcheckout>
+                    <file>le_onestepcheckout.xml</file>
+                </litextension_onestepcheckout>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <onestepcheckout>
+                <use>standard</use>
+                <args>
+                    <module>LitExtension_Onestepcheckout</module>
+                    <frontName>onepage</frontName>
+                </args>
+            </onestepcheckout>
+
+            <checkout>
+                <args>
+                    <modules>
+                        <LitExtension_Onestepcheckout_Checkout before="Mage_Checkout">LitExtension_Onestepcheckout_Checkout</LitExtension_Onestepcheckout_Checkout>
+                    </modules>
+                </args>
+            </checkout>
+
+        </routers>
+
+        <layout>
+            <updates>
+                <onestepcheckout>
+                    <file>le_onestepcheckout.xml</file>
+                </onestepcheckout>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <LitExtension_Onestepcheckout>
+                    <files>
+                        <default>LitExtension_Onestepcheckout.csv</default>
+                    </files>
+                </LitExtension_Onestepcheckout>
+            </modules>
+        </translate>
+
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <newsletter_order_place_after>
+                        <class>onestepcheckout/observer</class>
+                        <method>newsletter</method>
+                    </newsletter_order_place_after>
+                </observers>
+            </sales_order_place_after>
+
+            <checkout_submit_all_after>
+                <observers>
+                    <onestepcheckout_checkout_submit_all_after>
+                        <class>onestepcheckout/observer</class>
+                        <method>applyComment</method>
+                    </onestepcheckout_checkout_submit_all_after>
+                </observers>
+            </checkout_submit_all_after>
+
+            <controller_action_postdispatch>
+                <observers>
+                    <controller_action_after>
+                        <class>onestepcheckout/observer</class>
+                        <method>membershipControllerActionPostDispatch</method>
+                    </controller_action_after>
+                </observers>
+            </controller_action_postdispatch>
+
+            <add_to_cart_after>
+                <observers>
+                    <add_to_cart_after>
+                        <class>onestepcheckout/observer</class>
+                        <method>membershipCheckout</method>
+                    </add_to_cart_after>
+                </observers>
+            </add_to_cart_after>
+
+        </events>
+    </frontend>
+
+
+    <global>
+        <models>
+            <onestepcheckout>
+                <class>LitExtension_Onestepcheckout_Model</class>
+            </onestepcheckout>
+        </models>
+
+        <helpers>
+            <onestepcheckout>
+                <class>LitExtension_Onestepcheckout_Helper</class>
+            </onestepcheckout>
+            <checkout>
+                <rewrite>
+                    <url>LitExtension_Onestepcheckout_Helper_Url</url>
+                </rewrite>
+            </checkout>
+        </helpers>
+
+        <blocks>
+            <onestepcheckout>
+                <class>LitExtension_Onestepcheckout_Block</class>
+            </onestepcheckout>
+
+            <checkout>
+                <rewrite>
+                    <onepage_link>LitExtension_Onestepcheckout_Block_Onepage_Link</onepage_link>
+                    <agreements>LitExtension_Onestepcheckout_Block_Agreements</agreements>
+                </rewrite>
+            </checkout>
+        </blocks>
+        <!--<rewrite>-->
+            <!--<onestepcheckout_cart>-->
+                <!--<from><![CDATA[#^/checkout/cart/#]]></from>-->
+                <!--<to>/onepage/checkout_cart/</to>-->
+            <!--</onestepcheckout_cart>-->
+        <!--</rewrite>-->
+    </global>
+
+    <default>
+        <onestepcheckout>
+            <global>
+                <title>Onepage Checkout</title>
+                <description>Fill in the Fields below to complete your purchase!</description>
+                <status>1</status>
+                <layout>2col</layout>
+            </global>
+            <fields_settings>
+                <country>1</country>
+                <region>1</region>
+                <postcode>1</postcode>
+                <city>1</city>
+                <street>1</street>
+                <telephone>1</telephone>
+                <fax>opt</fax>
+                <company>opt</company>
+                <comments>1</comments>
+            </fields_settings>
+            <address_form_order>
+                <name>1</name>
+                <email>2</email>
+                <company>2</company>
+                <street>4</street>
+                <vat_id>5</vat_id>
+                <city>6</city>
+                <region_id>6</region_id>
+                <postcode>7</postcode>
+                <country_id>7</country_id>
+                <telephone>8</telephone>
+                <fax>8</fax>
+                <dob>9</dob>
+                <taxvat>10</taxvat>
+                <gender>10</gender>
+            </address_form_order>
+            <default>
+                <shipping>freeshipping_freeshipping</shipping>
+                <skip_shopping_cart_page>0</skip_shopping_cart_page>
+                <payment>checkmo</payment>
+                <subscribe>0</subscribe>
+                <subscribe_default>0</subscribe_default>
+                <show_shipping>1</show_shipping>
+                <discount_code>1</discount_code>
+            </default>
+            <geo>
+                <country>0</country>
+                <country_file>GeoIP.dat</country_file>
+                <city>0</city>
+                <city_file>GeoLiteCity.dat</city_file>
+            </geo>
+            <template_opc>
+                <style_managerment>3398CC</style_managerment>
+                <theme_manager>light</theme_manager>
+            </template_opc>
+            <checkout_login>
+                <login_link>1</login_link>
+                <guest_checkout>1</guest_checkout>
+                <login_message>Already registered? Click here to login for faster checkout</login_message>
+                <use_ajaxlogin>0</use_ajaxlogin>
+                <ajaxlogin_social>no</ajaxlogin_social>
+                <sociallogin_social>no</sociallogin_social>
+            </checkout_login>
+        </onestepcheckout>
+        <le_field1>
+            <status>0</status>
+            <label>Field #1</label>
+            <type>text</type>
+        </le_field1>
+        <le_field2>
+            <status>0</status>
+            <label>Field #2</label>
+            <type>text</type>
+        </le_field2>
+        <le_field3>
+            <status>0</status>
+            <label>Field #3</label>
+            <type>text</type>
+        </le_field3>
+    </default>
+
+    <adminhtml_system_config_edit>
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="setCanLoadTinyMce">
+                <load>1</load>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+</config>

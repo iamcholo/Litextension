@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     LEImageSlider
+ * @package     LitExtension_LEImageSlider
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+-->
+<widgets>
+    <leimageslider_widget type="leimageslider/widget" translate="name description" module="leimageslider">
+        <name>LE Image Slider</name>
+        <description>Add leimageslider for page</description>
+        <parameters>
+            <le_group_id>
+                <label>Group Slide</label>
+                <type>select</type>
+                <source_model>leimageslider/system_config_source_group</source_model>
+                <visible>1</visible>
+                <required>1</required>
+            </le_group_id>
+        </parameters>
+    </leimageslider_widget>
+</widgets> 

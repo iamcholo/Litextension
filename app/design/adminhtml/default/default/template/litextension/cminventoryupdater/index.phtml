@@ -1,0 +1,102 @@
+<?php
+/**
+ * @project: CMInventoryUpdater
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<div class="le-content-migration">
+    <div class="content-header">
+        <span class="lecamg-logo"></span>
+    </div>
+    <div id="w" class="clearfix">
+        <div id="le-content">
+            <div class="content-block">
+                <form action="<?php echo $this->getUrl('adminhtml/lecmui_index/update',array('_secure'=>true)); ?>" method="post" id="form-setup">
+                    <input name="form_key" type="hidden" value="<?php echo $this->getFormKey();?>" />
+                    <h1 class="header_title"><?php echo $this->__("Source Cart Setup"); ?></h1>
+                    <div class="le-container">
+                        <div class="le-form-fields">
+                            <div class="label-fields">
+                                <p>
+                                    <label for="token"><?php echo $this->__("Cart Type:"); ?>
+                                        <span class="required">*</span>
+                                    </label>
+                                </p>
+                            </div>
+                            <div class="input-fields">
+                                <p>
+                                    <select id="cms-type" name="cart_type" class="cms-type required-entry input-text">
+                                        <?php echo $this->getCartsOption("");?>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="le-form-fields">
+                            <div class="label-fields">
+                                <p>
+                                    <label for="source-cart-url"><?php echo $this->__("Cart Url"); ?>:<span class="required">*</span></label>
+                                </p>
+                            </div>
+                            <div class="input-fields">
+                                <p>
+                                    <input type="text" id="source-cart-url" name="cart_url" value="" class="source-cart-url required-entry input-text validate-url"/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="le-form-fields">
+                            <div class="label-fields">
+                                <p>
+                                    <label for="token"><?php echo $this->__("Cart Token"); ?>:<span class="required">*</span></label>
+                                </p>
+                            </div>
+                            <div class="input-fields">
+                                <p>
+                                    <input type="text" id="token" name="cart_token" class="token required-entry input-text validate-alphanum" value=""/>
+                                </p>
+
+                            </div>
+                        </div>
+                        <div class="le-form-fields">
+                            <div class="label-fields">
+                                <p>
+                                    <label><?php echo $this->__("Last Update From"); ?>:</label>
+                                </p>
+                            </div>
+                            <div class="input-fields">
+                                <p>
+                                    <input type="text" id="start_date" name="start_date" class="input-text" value=""/>
+                                    <img title="Select date" id="start_date_trig" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN).'adminhtml/default/default/images/grid-cal.gif';?>" class="v-middle">
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div class="le-submit">
+                        <div id="form-setup-submit" class="lecm-submit">
+                            <input type="submit" class="le-button" value="Update" name="submit"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="le-footer-migration">
+        <p><?php echo $this->__('Cart Migration Inventory Updater by LitExtension ver ') . Mage::getConfig()->getNode()->modules->LitExtension_CMInventoryUpdater->version;?></p>
+    </div>
+</div>
+<script type="text/javascript">
+    //< ![CDATA[
+    var cmForm = new varienForm('form-setup');
+    Calendar.setup({
+        inputField : 'start_date',
+        ifFormat : '%Y-%m-%d',
+        button : 'start_date_trig',
+        align : 'Bl',
+        singleClick : true
+    });
+    //]]>
+</script>

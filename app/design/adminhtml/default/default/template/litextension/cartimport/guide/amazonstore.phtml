@@ -1,0 +1,20 @@
+<?php
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<div class="section_guide">
+    <p>Please export your Amazon Store data to CSV file and upload it in fields below.</p>
+    <strong>Proceed with the following steps for required data tables:</strong>
+    <ol style="list-style: square; padding-left: 20px;">
+        <li>Sign in to your Amazon admin account.</li>
+        <li>Go to <b>Inventory Manage.</b> Actions and Export to File for All Search Results.</li>
+        <li>Go to <b>Reports -&gt; Fulfillment.</b> On the left, under Sales, go to All Orders.</li>
+        <li>One thing though, is that you can only run 30 days at a time. So you will have to run multiple reports in 30 day increments.</li>
+        <li>Upload saved file in the corresponding field below.</li>
+        <li>Please note if the size of downloaded file exceeds <?php echo ini_get('upload_max_filesize'); ?>B limit (<a href="https://www.google.com/search?q=change+php+upload+file+size" target="_blank">How to change this limit</a>)</li>
+    </ol>
+</div>

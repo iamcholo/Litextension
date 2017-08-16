@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <lecaip translate="title">
+                                        <title>LitExtension: Cart Importer</title>
+                                        <sort_order>80</sort_order>
+                                    </lecaip>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <litextension>
+                        <children>
+                            <cartimport translate="title">
+                                <title>Cart Importer</title>
+                                <sort_order>110</sort_order>
+                                <children>
+                                    <import translate="title">
+                                        <title>Import</title>
+                                        <sort_order>0</sort_order>
+                                    </import>
+                                    <config translate="title">
+                                        <title>Configuration</title>
+                                        <sort_order>10</sort_order>
+                                    </config>
+                                </children>
+                            </cartimport>
+                        </children>
+                    </litextension>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <litextension>
+            <children>
+                <cartimport translate="title">
+                    <title>Cart Importer</title>
+                    <sort_order>110</sort_order>
+                    <children>
+                        <import translate="title">
+                            <title>Import</title>
+                            <sort_order>0</sort_order>
+                            <action>adminhtml/lecaip_index/index</action>
+                        </import>
+                        <config translate="title">
+                            <title>Configuration</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/system_config/edit/section/lecaip</action>
+                        </config>
+                    </children>
+                </cartimport>
+            </children>
+        </litextension>
+    </menu>
+</config>

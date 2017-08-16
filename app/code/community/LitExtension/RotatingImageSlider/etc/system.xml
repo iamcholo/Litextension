@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project     RotatingImageSlider
+ * @package	LitExtension_RotatingImageSlider
+ * @author      LitExtension
+ * @email       litextension@gmail.com
+ */
+--> 
+<config>
+
+    <sections>
+        <rotatingimageslider translate="label" module="rotatingimageslider">
+            <class>separator-top</class>
+            <label>Rotating Image Slider</label>
+            <tab>litextension</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1020</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <rotatingimageslider translate="label" module="rotatingimageslider">
+                    <label>General Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <autoplay>
+                           <label>Auto Play </label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno </source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+                        </autoplay>
+                        
+                        <showhide>
+                            <label>Show Play/Pause</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno </source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showhide>
+                        
+                        <width translate="label, comment">
+                            <label>Width</label>
+                            <comment><![CDATA[Unit is px]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </width>
+                        
+                        <height translate="label, comment">
+                            <label>Height</label>
+                            <comment><![CDATA[Unit is px]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry validate-number</validate>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </height>
+                        
+                        <bgcolor translate="label, comment">
+                            <label>Background Color</label>
+                            <comment><![CDATA[Hex code color]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-le-hexcolor color{required:false, adjust:false, hash:false}</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bgcolor>
+                        
+                        <label translate="label, comment">
+                            <label>Label</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label>
+                         
+                        <label_position translate="label, comment">
+                            <label>Label Position</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rotatingimageslider/system_config_source_position </source_model>
+                            <validate>required-entry</validate>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label_position>
+
+                    </fields>
+                </rotatingimageslider>
+            </groups>
+        </rotatingimageslider>
+    </sections>
+</config> 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <lewysiwyg translate="title" module="lewysiwyg">
+                                        <title>Wysiwyg Editor Pro</title>
+                                    </lewysiwyg>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <litextension>
+                       <children>
+                           <lewysiwyg>
+                                <title>Wysiwyg Editor Pro</title>
+                            </lewysiwyg>
+                       </children>
+                    </litextension>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <litextension>
+             <children>
+                <lewysiwyg>
+                    <title>Wysiwyg Editor Pro</title>
+                    <action>adminhtml/system_config/edit/section/lewysiwyg</action>
+                    <sort_order>80</sort_order>
+                    <depends>
+                        <module>LitExtension_Wysiwyg</module>
+                    </depends>
+                </lewysiwyg>
+            </children>
+        </litextension>
+    </menu>
+</config>

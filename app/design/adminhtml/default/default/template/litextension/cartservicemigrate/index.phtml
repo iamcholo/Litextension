@@ -1,0 +1,50 @@
+<?php
+/**
+ * @project: CartServiceMigrate
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<?php $notice = $this->getNotice(); ?>
+<script type="text/javascript">
+    ;(function($){
+        $(document).ready(function(){
+            $.LeCSMg({
+                url: '<?php echo $this->getUrl('adminhtml/lecsmg_index/import',array('_secure'=>true)); ?>',
+                formKey : '<?php echo $this->getFormKey(); ?>',
+                fnResume: '<?php echo $notice['fn_resume']; ?>',
+                timeDelay: '<?php echo $notice['setting']['delay'] * 1000?>',
+                autoRetry: '<?php echo $notice['setting']['retry'] * 1000?>'
+            });
+        });
+    })(jle);
+</script>
+<div id="lecsmg-wrap">
+    <div class="content-header">
+        <span class="lecsmg-logo"></span>
+    </div>
+    <div id="w" class="clearfix">
+        <div id="lecsmg-menu">
+            <div id="menu-setup" class="step-menu open"><strong> 1. <?php echo $this->__("Source Cart Setup"); ?></strong></div>
+            <div id="menu-config"  class="step-menu"><strong> 2. <?php echo $this->__("Configuration"); ?></strong></div>
+            <div id="menu-confirm"  class="step-menu"><strong> 3. <?php echo $this->__("Migration"); ?></strong></div>
+        </div>
+        <div id="lecsmg-content">
+            <?php if($notice['is_running']){ ?>
+                <div id="lecsmg-resume" class="content-block">
+                    <?php echo $this->getChild('lecsmg.resume')->setNotice($notice)->toHtml();?>
+                </div>
+            <?php } ?>
+            <div id="lecsmg-setup" class="content-block">
+                <?php echo $this->getChild('lecsmg.setup')->setNotice($notice)->toHtml();?>
+            </div>
+            <div id="lecsmg-config" class="content-block"></div>
+            <div id="lecsmg-confirm" class="content-block"></div>
+            <div id="lecsmg-import" class="content-block"></div>
+        </div>
+    </div>
+    <div id="lecsmg-footer">
+        <p><?php echo $this->__('Cart Service Migration by LitExtension ver ') . Mage::getConfig()->getNode()->modules->LitExtension_CartServiceMigrate->version;?></p>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @project: CartServiceMigrate
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+-->
+<config>
+    <modules>
+        <LitExtension_CartServiceMigrate>
+            <version>1.0.0</version>
+        </LitExtension_CartServiceMigrate>
+    </modules>
+
+    <global>
+        <blocks>
+            <lecsmg>
+                <class>LitExtension_CartServiceMigrate_Block</class>
+            </lecsmg>
+        </blocks>
+        <helpers>
+            <lecsmg>
+                <class>LitExtension_CartServiceMigrate_Helper</class>
+            </lecsmg>
+        </helpers>
+        <models>
+            <lecsmg>
+                <class>LitExtension_CartServiceMigrate_Model</class>
+                <resourceModel>lecsmg_mysql4</resourceModel>
+            </lecsmg>
+            <lecsmg_mysql4>
+                <class>LitExtension_CartServiceMigrate_Model_Mysql4</class>
+                <entities>
+                    <import>
+                        <table>lecsmg_import</table>
+                    </import>
+                    <user>
+                        <table>lecsmg_user</table>
+                    </user>
+                    <recent>
+                        <table>lecsmg_recent</table>
+                    </recent>
+                </entities>
+            </lecsmg_mysql4>
+        </models>
+        <resources>
+            <lecsmg_setup>
+                <setup>
+                    <module>LitExtension_CartServiceMigrate</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </lecsmg_setup>
+        </resources>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <litextension_cartservicemigration>
+                    <file>litextension/cartservicemigrate.xml</file>
+                </litextension_cartservicemigration>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <LitExtension_CartServiceMigrate>
+                    <files>
+                        <default>LitExtension_CartServiceMigrate.csv</default>
+                    </files>
+                </LitExtension_CartServiceMigrate>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LitExtension_CartServiceMigrate before="Mage_Adminhtml">LitExtension_CartServiceMigrate_Adminhtml</LitExtension_CartServiceMigrate>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+
+    </frontend>
+
+    <default>
+        <lecsmg>
+            <general>
+                <categories>4</categories>
+                <products>4</products>
+                <reviews>4</reviews>
+                <taxes>4</taxes>
+                <manufacturers>4</manufacturers>
+                <customers>4</customers>
+                <orders>4</orders>
+                <delay>0.05</delay>
+                <retry>30</retry>
+                <license></license>
+            </general>
+        </lecsmg>
+    </default>
+</config>

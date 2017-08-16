@@ -1,0 +1,23 @@
+<?php
+/**
+ * @project: CartImport
+ * @author : LitExtension
+ * @url    : http://litextension.com
+ * @email  : litextension@gmail.com
+ */
+?>
+<div class="section_guide">
+    <p>Please export your Volusion Store data to CSV file and upload it in fields below.</p>
+    <strong>Proceed with the following steps for required data tables:</strong>
+    <ol style="list-style: square; padding-left: 20px;">
+        <li>Sign in to your Volusion admin account.</li>
+        <li>Go to <b>Inventory -&gt; Import/Export</b> and click on <b>"Standart Export"</b> button.</li>
+        <li>Select the appropriate data table from <b>"Export from"</b> drop-down.</li>
+        <li>Select all Columns using checkbox.</li>
+        <li>Select <b>"CSV - Comma Delimited Text File"</b> from <b>"File Format"</b> drop-down.</li>
+        <li>Click on the <b>"Export"</b> button.</li>
+        <li>Download generated file to your local computer.</li>
+        <li>Upload saved file in the corresponding field below.</li>
+        <li>Please note if the size of downloaded CSV file exceeds <?php echo ini_get('upload_max_filesize'); ?>B limit (<a href="https://www.google.com/search?q=change+php+upload+file+size" target="_blank">How to change this limit</a>)</li>
+    </ol>
+</div>
